@@ -54,6 +54,7 @@ h1{
 	/*background-color: red;*/
 	/*border:1px solid black;*/
 }
+/* ----------- x's and o's ---------*/
 .x {
 	height: 50px;
 	width: 50px;
@@ -84,4 +85,24 @@ h1{
 }
 .xo7, .xo8, .xo9 {
 	top: 260px;
+}
+.computer-won, .game-draw, .user-won, .restart {
+	display: none;
+	position:absolute;
+	top: 360px;
+	left: 100px;
+	color:red;
+}
+.game-draw{
+	left: 115px;
+	color:blue;
+}
+.user-won{
+	color:green;
+	left: 40px;
+}
+.restart{
+	color:black;
+	top: 400px;
+	left: 145px;
 }

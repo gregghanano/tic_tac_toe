@@ -14,12 +14,12 @@ $(document).ready(function(){
 
 	Game.prototype.doMoves = function(space, user){
 		if(user == true){
-			match.draw(space, user);
+			// match.draw(space, user);
 			match.fillBoards(space - 1, user);
 			match.compMoves(); //computer moves
 		}
 		if (user == false){
-			match.draw(space, user);
+			// match.draw(space, user);
 			match.fillBoards(space - 1, user);
 		}
 		match.check();
@@ -28,17 +28,14 @@ $(document).ready(function(){
 		//method to check who has won and restart game
 		var won = match.checkWinner();
 		if(won === "X"){
-			alert("The user has won!");
-			match.restart();
-			return;
+			$('.user-won').show("fast");
+			$('.restart').show('fast');
 		} else if (won === "O") {
-			alert("The computer has won!");
-			match.restart();
-			return;
+			$('.computer-won').show("fast");
+			$('.restart').show("fast");
 		} else if (won === "draw"){
-			alert("The game is a draw");
-			match.restart();
-			return;
+			$('.game-draw').show("fast");
+			$('.restart').show('fast');
 		}
 	};
 
@@ -211,6 +208,7 @@ $(document).ready(function(){
 			bestMove = temp + 1;
 		}
 
+		match.draw(bestMove, false);
 		match.doMoves(bestMove, false);
 	}
 
@@ -288,38 +286,50 @@ $(document).ready(function(){
 	$('.o').hide();
 
 	$(".top-left").click(function(){
+		match.draw(1, true);
 		match.doMoves(1, true);
 	})
 
 	$(".top-middle").click(function(){
+		match.draw(2, true);
 		match.doMoves(2, true);
 	})
 
 	$(".top-right").click(function(){
+		match.draw(3, true);
 		match.doMoves(3, true);
 	})
 
 	$(".middle-left").click(function(){
+		match.draw(4, true);
 		match.doMoves(4, true);
 	})
 
 	$(".middle").click(function(){
+		match.draw(5, true);
 		match.doMoves(5, true);
 	})
 
 	$(".middle-right").click(function(){
+		match.draw(6, true);
 		match.doMoves(6, true);
 	})
 
 	$(".bottom-left").click(function(){
+		match.draw(7, true);
 		match.doMoves(7, true);
 	})
 
 	$(".bottom-middle").click(function(){
+		match.draw(8, true);
 		match.doMoves(8, true);
 	})
 
 	$(".bottom-right").click(function(){
+		match.draw(9, true);
 		match.doMoves(9, true);
+	})
+	$('.restart').click(function(){
+		match.restart();
 	})
 })
