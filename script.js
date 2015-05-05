@@ -189,6 +189,11 @@ $(document).ready(function(){
 			console.log("O possible win temp");
 			bestMove = temp + 1;
 		}
+		
+		//quick fix for win. if top right, middle, and bottom left are taken, best move is 8
+		if (board[2] === true && board[4] === true && board[6] === true) {
+			bestMove = 8;
+		}
 		match.doMoves(bestMove, false);
 	}
 
