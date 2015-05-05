@@ -47,7 +47,9 @@ $(document).ready(function(){
 					 false, false, false,
 					 false, false, false];
 
-		var takenBy = [];
+		var takenBy = ['','','',
+					'','','',
+					'','',''];
 		$('.x').hide();
 		$('.o').hide();
 		window.location.reload();
@@ -91,34 +93,34 @@ $(document).ready(function(){
 		if(user == false){
 			switch(space){
 				case 1:
-					$('.xo1.o').show("slow");
+					$('.xo1.o').show("fast");
 					break;
 				case 2:
-					$('.xo2.o').show("slow");
+					$('.xo2.o').show("fast");
 					break;
 				case 3:
-					$('.xo3.o').show("slow");
+					$('.xo3.o').show("fast");
 					break;
 				case 4:
-					$('.xo4.o').show("slow");
+					$('.xo4.o').show("fast");
 					break;
 				case 5:
-					$('.xo5.o').show("slow");
+					$('.xo5.o').show("fast");
 					break;
 				case 6:
-					$('.xo6.o').show("slow");
+					$('.xo6.o').show("fast");
 					break;
 				case 7:
-					$('.xo7.o').show("slow");
+					$('.xo7.o').show("fast");
 					break;
 				case 8:
-					$('.xo8.o').show("slow");
+					$('.xo8.o').show("fast");
 					break;
 				case 9:
-					$('.xo9.o').show("slow");
+					$('.xo9.o').show("fast");
 					break;
 				default:
-					$('.xo1.o').show('slow');
+					$('.xo1.o').show('fast');
 					break;
 			}
 		}
@@ -143,15 +145,12 @@ $(document).ready(function(){
 		var possibleWin = '';
 		var winningMove = 10;
 		//cycle through all possible moves
-		for(var i = 0; i < 8; i++){
+		for(var i = 0; i < 9; i++){
 			if(board[i] === false){
 				var originalValue = takenBy[i];
 				// for each possible move, check to see if that move will win
 				match.fillBoards(i, user);
-				console.log(board);
-				console.log(takenBy);
 				possibleWin = match.checkWinner();
-				console.log(possibleWin);
 				if(possibleWin == winningChar){
 					console.log(i + " Possible win here!");
 					winningMove = i;
@@ -185,29 +184,30 @@ $(document).ready(function(){
 			bestMove = 5;
 		}
 
-		//quick fix for win. if top right, middle, and bottom left are taken, best move is 8
-		if (board[2] === true && board[4] === true && board[6] === true) {
+		//quick fixes to block user wins when the computer cant on its own
+		if (board[2] === true && board[4] === true && board[6] === true && board[7] === false) {
 			bestMove = 8;
 		}
-		if(board[1] === true && board[5] === true){
+		if(board[1] === true && board[5] === true && board[2] === false){
 			bestMove = 3;
 		}
-		if(board[2] === true && board[4] === true){
+		if(board[2] === true && board[4] === true && board[8] === false){
 			bestMove = 9;
 		}
-		if(board[1] === true && board[8] === true){
+		if(board[1] === true && board[8] === true && board[2] === false){
 			bestMove = 3;
+		}
+		if(board[6] === true && board[2] === true && takenBy[4]==="O" && board[7] === false){
+			bestMove = 8;
 		}
 
 
 		temp = match.possibleWin('X', true);
 		if(temp !== 10){
-			console.log("x possible win temp");
 			bestMove = temp + 1;
 		}
 		temp = match.possibleWin('O', false);
 		if(temp !== 10){
-			console.log("O possible win temp");
 			bestMove = temp + 1;
 		}
 
