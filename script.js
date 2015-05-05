@@ -152,7 +152,7 @@ $(document).ready(function(){
 				match.fillBoards(i, user);
 				possibleWin = match.checkWinner();
 				if(possibleWin == winningChar){
-					console.log(i + " Possible win here!");
+					// console.log(i + " Possible win here!");
 					winningMove = i;
 					board[i] = false;
 					takenBy[i] = originalValue;
