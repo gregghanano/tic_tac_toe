@@ -14,12 +14,12 @@ $(document).ready(function(){
 
 	Game.prototype.doMoves = function(space, user){
 		if(user == true){
-			// match.draw(space, user);
+			match.draw(space, user);
 			match.fillBoards(space - 1, user);
 			match.compMoves(); //computer moves
 		}
 		if (user == false){
-			// match.draw(space, user);
+			match.draw(space, user);
 			match.fillBoards(space - 1, user);
 		}
 		match.check();
@@ -208,7 +208,6 @@ $(document).ready(function(){
 			bestMove = temp + 1;
 		}
 
-		match.draw(bestMove, false);
 		match.doMoves(bestMove, false);
 	}
 
@@ -286,48 +285,57 @@ $(document).ready(function(){
 	$('.o').hide();
 
 	$(".top-left").click(function(){
-		match.draw(1, true);
-		match.doMoves(1, true);
+		if(board[0] === false){
+			match.doMoves(1, true);
+		}
 	})
 
 	$(".top-middle").click(function(){
-		match.draw(2, true);
-		match.doMoves(2, true);
+		if(board[1] === false){
+			match.doMoves(2, true);
+		}
 	})
 
 	$(".top-right").click(function(){
-		match.draw(3, true);
-		match.doMoves(3, true);
+		if(board[2] === false){
+			match.doMoves(3, true);
+		}
 	})
 
 	$(".middle-left").click(function(){
-		match.draw(4, true);
-		match.doMoves(4, true);
+		if(board[3] === false){
+			match.doMoves(4, true);
+		}
 	})
 
 	$(".middle").click(function(){
-		match.draw(5, true);
-		match.doMoves(5, true);
+		if(board[4] === false){
+			match.doMoves(5, true);
+		}
 	})
 
 	$(".middle-right").click(function(){
-		match.draw(6, true);
-		match.doMoves(6, true);
+		if(board[5] === false){
+			match.doMoves(6, true);
+		}
 	})
 
 	$(".bottom-left").click(function(){
-		match.draw(7, true);
-		match.doMoves(7, true);
+		if(board[6] === false){
+			match.doMoves(7, true);
+		}
 	})
 
 	$(".bottom-middle").click(function(){
-		match.draw(8, true);
-		match.doMoves(8, true);
+		if(board[7] === false){
+			match.doMoves(8, true);
+		}
 	})
 
 	$(".bottom-right").click(function(){
-		match.draw(9, true);
-		match.doMoves(9, true);
+		if(board[8] === false){
+			match.doMoves(9, true);
+		}
 	})
 	$('.restart').click(function(){
 		match.restart();
