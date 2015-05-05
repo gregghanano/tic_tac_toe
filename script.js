@@ -23,6 +23,7 @@ $(document).ready(function(){
 		match.check();
 	}
 	Game.prototype.check = function(){
+		//method to check who has won and restart game
 		var won = match.checkWinner();
 		if(won === "X"){
 			alert("The user has won!");
@@ -132,11 +133,11 @@ $(document).ready(function(){
 		if (user == false){
 			takenBy[space] = "O";
 		}
-		console.log(board);
-		console.log(takenBy);
 	}
 
 	Game.prototype.possibleWin = function(winningChar, user){
+		//method finds a possible winning move. returns 10 if
+		//no move can win
 		var possibleWin = '';
 		var winningMove = 10;
 		//cycle through all possible moves
@@ -163,6 +164,8 @@ $(document).ready(function(){
 
 	Game.prototype.compMoves = function(){
 		var temp = 10;
+
+		//picks a random move if no best move
 		for(var i=0; i< board.length; i++){
 			if(board[i] === false)
 				bestMove = i + 1;
@@ -186,7 +189,6 @@ $(document).ready(function(){
 			console.log("O possible win temp");
 			bestMove = temp + 1;
 		}
-		console.log(bestMove, "this is the best move");
 		match.doMoves(bestMove, false);
 	}
 
@@ -201,7 +203,6 @@ $(document).ready(function(){
 		} else if (takenBy[6] == "X" && takenBy[7] == "X" && takenBy[8] == "X"){
 			return "X"
 		}
-		console.log("No rows for X");
 
 		//check columns for X
 		if (takenBy[0] == "X" && takenBy[3] == "X" && takenBy[6] == "X"){
@@ -211,7 +212,6 @@ $(document).ready(function(){
 		} else if (takenBy[2] == "X" && takenBy[5] == "X" && takenBy[8] == "X"){
 			return "X";
 		}
-		console.log("No columns for X");
 
 		//check diagonals for X
 		if (takenBy[0] == "X" && takenBy[4] == "X" && takenBy[8] == "X"){
@@ -219,7 +219,6 @@ $(document).ready(function(){
 		} else if (takenBy[2] == "X" && takenBy[4] == "X" && takenBy[6] == "X"){
 			return "X";
 		}
-		console.log("No diagonals for X");
 
 		// -------- CHECK IF COMPUTER WINS -----------
 		//check rows for O
@@ -230,7 +229,6 @@ $(document).ready(function(){
 		} else if (takenBy[6] == "O" && takenBy[7] == "O" && takenBy[8] == "O"){
 			return "O"
 		}
-		console.log('No rows for O');
 
 		//check columns for O
 		if (takenBy[0] == "O" && takenBy[3] == "O" && takenBy[6] == "O"){
@@ -240,7 +238,6 @@ $(document).ready(function(){
 		} else if (takenBy[2] == "O" && takenBy[5] == "O" && takenBy[8] == "O"){
 			return "O";
 		}
-		console.log("No columns for O");
 
 		//check diagonals for O
 		if (takenBy[0] == "O" && takenBy[4] == "O" && takenBy[8] == "O"){
@@ -248,7 +245,6 @@ $(document).ready(function(){
 		} else if (takenBy[2] == "O" && takenBy[4] == "O" && takenBy[6] == "O"){
 			return "O";
 		}
-		console.log("No diagonals for O");
 
 		//------- CHECK IF DRAW --------
 		var draw = true;
@@ -269,28 +265,6 @@ $(document).ready(function(){
 	$('.x').hide();
 	$('.o').hide();
 
-	$(".middle").click(function(){
-		match.doMoves(5, true);
-		// match.fillBoards(5, true);
-		// ---------- user moves ------------
-		// var boardspace = 5; // click function space
-		// $('.xo5.x').show(); // showing the 'X'
-
-		//board[boardspace -1 ] = true; // fillBoards method will do this
-		//takenBy[boardspace - 1] = 'x'; // fillBoards method will do this
-
-		console.log(board);
-		console.log(takenBy);
-		// --------- computer moves ----------
-		// alert('Computer is thinking...');
-		// $('.xo9.o').show("slow");
-		// boardspace = 9;
-		// board[boardspace - 1] = true;
-		// takenBy[boardspace-1] = "o";
-		// console.log(board);
-		// console.log(takenBy);
-	})
-
 	$(".top-left").click(function(){
 		match.doMoves(1, true);
 	})
@@ -305,6 +279,10 @@ $(document).ready(function(){
 
 	$(".middle-left").click(function(){
 		match.doMoves(4, true);
+	})
+
+	$(".middle").click(function(){
+		match.doMoves(5, true);
 	})
 
 	$(".middle-right").click(function(){
