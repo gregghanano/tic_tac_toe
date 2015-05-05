@@ -4,7 +4,9 @@ $(document).ready(function(){
 				 false, false, false,
 				 false, false, false];
 
-	var takenBy = [];
+	var takenBy = ['','','',
+					'','','',
+					'','',''];
 	var bestMove = 0;
 	//setting the Game object
 	function Game(){
@@ -146,9 +148,12 @@ $(document).ready(function(){
 				var originalValue = takenBy[i];
 				// for each possible move, check to see if that move will win
 				match.fillBoards(i, user);
+				console.log(board);
+				console.log(takenBy);
 				possibleWin = match.checkWinner();
+				console.log(possibleWin);
 				if(possibleWin == winningChar){
-					console.log("Possible win here!");
+					console.log(i + " Possible win here!");
 					winningMove = i;
 					board[i] = false;
 					takenBy[i] = originalValue;
@@ -172,8 +177,9 @@ $(document).ready(function(){
 		}
 		//second move should be a corner
 		if(board[6] == false && board[8] == false){
-			bestMove = 7
+			bestMove = 7;
 		}
+
 		//take middle if open
 		if (board[4] === false){
 			bestMove = 5;
@@ -183,6 +189,16 @@ $(document).ready(function(){
 		if (board[2] === true && board[4] === true && board[6] === true) {
 			bestMove = 8;
 		}
+		if(board[1] === true && board[5] === true){
+			bestMove = 3;
+		}
+		if(board[2] === true && board[4] === true){
+			bestMove = 9;
+		}
+		if(board[1] === true && board[8] === true){
+			bestMove = 3;
+		}
+
 
 		temp = match.possibleWin('X', true);
 		if(temp !== 10){
