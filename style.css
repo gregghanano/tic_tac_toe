@@ -1,0 +1,87 @@
+*{
+	font-family: arial, sans-serif;
+}
+#container {
+	height: 500px;
+	width: 500px;
+	border:1px solid black;
+}
+h1{
+	margin-left: 95px;
+}
+#vertLine1, #vertLine2{
+	position:absolute;
+	left: 145px;
+	top: 90px;
+	height: 250px;
+	width:2px;
+	border:1px solid black;
+	background-color:black;
+	display:inline;
+	z-index:2;
+}
+#vertLine2 {
+	left: 224px;
+}
+#horizLine1, #horizline2 {
+	position:absolute;
+	left: 60px;
+	top: 170px;
+	height: 2px;
+	width:250px;
+	border:1px solid black;
+	background-color:black;
+	display:inline;
+	z-index:2;
+}
+#horizLine2 {
+	top: 245px;
+}
+#table {
+	margin-left: 40px;
+	display: inline-block;
+	/*border: 1px solid black;*/
+	text-align:center;
+	width: 275px;
+	max-height: 275px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#square {
+	display:inline-block;
+	height: 75px;
+	width: 75px;
+	/*background-color: red;*/
+	/*border:1px solid black;*/
+}
+.x {
+	height: 50px;
+	width: 50px;
+	background-image: url("images/rsz_1x.png");
+}
+.o {
+	height: 50px;
+	width: 50px;
+	background-image: url("images/rsz_o.png");
+}
+.xo1, .xo2, .xo3, .xo4, .xo5, .xo6, .xo7, .xo8, .xo9 {
+	position: absolute;
+}
+.xo1, .xo2, .xo3 {
+	top: 112px;
+}
+.xo1, .xo4, .xo7 {
+	left: 80px;
+}
+.xo2, .xo5, .xo8 {
+	left: 162px;
+}
+.xo3, .xo6, .xo9 {
+	left: 240px;
+}
+.xo4, .xo5, .xo6 {
+	top: 184px;
+}
+.xo7, .xo8, .xo9 {
+	top: 260px;
+}
