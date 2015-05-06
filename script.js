@@ -197,6 +197,15 @@ $(document).ready(function(){
 		if(board[6] === true && board[2] === true && takenBy[4]==="O" && board[7] === false){
 			bestMove = 8;
 		}
+		if(board[1] === true && board[6] === true && takenBy[4] === "O" && board[0] === false){
+			bestMove = 1;
+		}
+		if(board[5] === true && board[0] === true && takenBy[4] === "O" && board[2] === false){
+			bestMove = 3;
+		}
+		if(board[3] === true && board[2] === true && takenBy[4] === "O" && board[0] === false){
+			bestMove = 1;
+		}
 
 
 		temp = match.possibleWin('X', true);
